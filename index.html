@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerador de Pet Ideal</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Ícones Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Fonte Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+  <!-- CABEÇALHO / NAVEGAÇÃO -->
+  <header class="navbar">
+    <div class="container nav-container">
+      <div class="logo">
+        <i class="fa-solid fa-paw"></i>
+        <span>PetMatch</span>
+      </div>
+      <nav>
+        <button class="nav-btn active" data-target="quiz-section">
+          <i class="fa-solid fa-sliders"></i> Gerador
+        </button>
+        <button class="nav-btn" data-target="catalog-section">
+          <i class="fa-solid fa-book-open"></i> Catálogo
+        </button>
+        <button class="nav-btn" data-target="favorites-section">
+          <i class="fa-solid fa-heart"></i> Favoritos <span id="fav-count" class="badge-count">0</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container main-content">
+
+    <!-- SEÇÃO 1: FORMULÁRIO DO QUIZ -->
+    <section id="quiz-section" class="tab-content active">
+      <div class="hero">
+        <h1>Descubra o Seu <span class="highlight">Pet Ideal</span> 🐶🐱</h1>
+        <p>Responda às perguntas abaixo sobre o seu estilo de vida e nosso algoritmo calculará o animal que melhor se adapta à sua rotina!</p>
+      </div>
+
+      <form id="pet-form" class="quiz-card">
+        
+        <!-- Pergunta 1: Moradia -->
+        <div class="form-group">
+          <label class="form-label"><i class="fa-solid fa-house"></i> Onde você mora?</label>
+          <div class="options-grid">
+            <label class="option-card">
+              <input type="radio" name="housing" value="apartment" checked>
+              <div class="card-content">
+                <i class="fa-solid fa-building"></i>
+                <span>Apartamento</span>
+              </div>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="housing" value="house_small">
+              <div class="card-content">
+                <i class="fa-solid fa-house-chimney"></i>
+                <span>Casa sem quintal</span>
+              </div>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="housing" value="house_yard">
+              <div class="card-content">
+                <i class="fa-solid fa-tree"></i>
+                <span>Casa com quintal</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Pergunta 2: Crianças e Outros Animais -->
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label"><i class="fa-solid fa-child"></i> Tem crianças em casa?</label>
+            <div class="options-grid cols-2">
+              <label class="option-card">
+                <input type="radio" name="kids" value="yes" checked>
+                <div class="card-content"><span>Sim</span></div>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="kids" value="no">
+                <div class="card-content"><span>Não</span></div>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label"><i class="fa-solid fa-dog"></i> Já tem outros animais?</label>
+            <div class="options-grid cols-2">
+              <label class="option-card">
+                <input type="radio" name="otherPets" value="yes" checked>
+                <div class="card-content"><span>Sim</span></div>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="otherPets" value="no">
+                <div class="card-content"><span>Não</span></div>
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Pergunta 3: Tempo Disponível -->
+        <div class="form-group">
+          <label class="form-label"><i class="fa-solid fa-clock"></i> Tempo diário disponível para o pet:</label>
+          <div class="options-grid">
+            <label class="option-card">
+              <input type="radio" name="time" value="low">
+              <div class="card-content">
+                <i class="fa-solid fa-hourglass-start"></i>
+                <span>Pouco (< 1 hora)</span>
+              </div>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="time" value="medium" checked>
+              <div class="card-content">
+                <i class="fa-solid fa-hourglass-half"></i>
+                <span>Médio (1 a 2 horas)</span>
+              </div>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="time" value="high">
+              <div class="card-content">
+                <i class="fa-solid fa-hourglass-end"></i>
+                <span>Bastante (> 2 horas)</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Pergunta 4: Orçamento -->
+        <div class="form-group">
+          <label class="form-label"><i class="fa-solid fa-wallet"></i> Orçamento mensal para cuidados:</label>
+          <div class="options-grid">
+            <label class="option-card">
+              <input type="radio" name="budget" value="1">
+              <div class="card-content">
+                <span class="cost-tag">$</span>
+                <span>Econômico</span>
+              </div>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="budget" value="2" checked>
+              <div class="card-content">
+                <span class="cost-tag">$$</span>
+                <span>Moderado</span>
+              </div>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="budget" value="3">
+              <div class="card-content">
+                <span class="cost-tag">$$$</span>
+                <span>Sem Restrição</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Pergunta 5: Preferência de Espécie -->
+        <div class="form-group">
+          <label class="form-label"><i class="fa-solid fa-heart"></i> Prefere qual tipo de pet?</label>
+          <div class="options-grid cols-3">
+            <label class="option-card">
+              <input type="radio" name="species" value="any" checked>
+              <div class="card-content"><span>Qualquer um</span></div>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="species" value="dog">
+              <div class="card-content"><span>Cachorro</span></div>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="species" value="cat">
+              <div class="card-content"><span>Gato</span></div>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="species" value="bird">
+              <div class="card-content"><span>Ave</span></div>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="species" value="rodent">
+              <div class="card-content"><span>Roedor</span></div>
+            </label>
+            <label class="option-card">
+              <input type="radio" name="species" value="exotic">
+              <div class="card-content"><span>Aquático / Outros</span></div>
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-submit">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> Encontrar Meu Pet Ideal
+        </button>
+      </form>
+    </section>
+
+    <!-- SEÇÃO 2: RESULTADO DA RECOMENDAÇÃO -->
+    <section id="result-section" class="tab-content hidden">
+      <div class="result-header">
+        <h2>Encontramos seu parceiro ideal! 🎉</h2>
+        <p>Com base nas suas preferências e rotina, este é o pet recomendado:</p>
+      </div>
+
+      <div class="result-card" id="result-card-content">
+        <!-- Conteúdo inserido dinamicamente via JS -->
+      </div>
+
+      <!-- Outras opções recomendadas -->
+      <div class="alternatives-section">
+        <h3>Outras ótimas opções para você:</h3>
+        <div class="alternatives-grid" id="alternatives-grid">
+          <!-- Cards secundários inseridos via JS -->
+        </div>
+      </div>
+
+      <div class="action-buttons">
+        <button id="btn-recalculate" class="btn-secondary">
+          <i class="fa-solid fa-rotate-left"></i> Refazer Teste
+        </button>
+        <button id="btn-next-match" class="btn-primary">
+          <i class="fa-solid fa-shuffle"></i> Ver Outra Opção Compatível
+        </button>
+      </div>
+    </section>
+
+    <!-- SEÇÃO 3: CATÁLOGO DE PETS -->
+    <section id="catalog-section" class="tab-content hidden">
+      <div class="hero">
+        <h1>Catálogo de <span class="highlight">Pets</span></h1>
+        <p>Explore todas as espécies e raças disponíveis no nosso banco de dados.</p>
+      </div>
+
+      <!-- Filtros do catálogo -->
+      <div class="filter-bar">
+        <input type="text" id="catalog-search" placeholder="Buscar por nome ou raça..." class="search-input">
+        
+        <select id="catalog-filter-species" class="filter-select">
+          <option value="all">Todas as Espécies</option>
+          <option value="dog">Cães</option>
+          <option value="cat">Gatos</option>
+          <option value="bird">Aves</option>
+          <option value="rodent">Roedores</option>
+          <option value="exotic">Outros / Répteis / Peixes</option>
+        </select>
+
+        <select id="catalog-filter-energy" class="filter-select">
+          <option value="all">Todas as Energias</option>
+          <option value="Baixa">Energia Baixa</option>
+          <option value="Média">Energia Média</option>
+          <option value="Alta">Energia Alta</option>
+        </select>
+      </div>
+
+      <div class="catalog-grid" id="catalog-grid">
+        <!-- Renderizado via JS -->
+      </div>
+    </section>
+
+    <!-- SEÇÃO 4: FAVORITOS -->
+    <section id="favorites-section" class="tab-content hidden">
+      <div class="hero">
+        <h1>Meus <span class="highlight">Favoritos</span> ❤️</h1>
+        <p>Sua lista de pets salvos para consultar quando quiser.</p>
+      </div>
+
+      <div id="favorites-grid" class="catalog-grid">
+        <!-- Renderizado via JS -->
+      </div>
+      <div id="favorites-empty" class="empty-state hidden">
+        <i class="fa-regular fa-heart"></i>
+        <h3>Nenhum pet favoritado ainda</h3>
+        <p>Navegue pelo catálogo ou faça o teste para salvar seus pets preferidos!</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- MODAL DE DETALHES DO PET -->
+  <div id="pet-modal" class="modal hidden">
+    <div class="modal-overlay"></div>
+    <div class="modal-content">
+      <button class="modal-close" id="modal-close">&times;</button>
+      <div id="modal-body">
+        <!-- Preenchido via JS -->
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>Gerador de Pet Ideal &copy; 2026 - Encontre o companheiro perfeito para o seu estilo de vida.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
